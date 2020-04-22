@@ -1,0 +1,105 @@
+<Test Name="System" Type="systemtest">
+    <TypeAssignments>
+        <SystemParameterTypes>
+            <Field Type="int" Name="NumberOfWorker"></Field>
+        </SystemParameterTypes>
+        <InputType Type="VoteSlice" Name="Votes"></InputType>
+        <OracleType Type="DecisionSlice" Name="Decisions"></OracleType>
+        <OracleType Type="DecisionEnum" Name="FinalDecision"></OracleType>
+    </TypeAssignments>
+    <SystemParameters>
+        <NumberOfWorker>2</NumberOfWorker>
+    </SystemParameters>
+    <TestCase ID="1">
+        <InputValues>
+            <Vote>
+                <WorkerID>1</WorkerID>
+                <VoteValue>1</VoteValue>
+            </Vote>
+            <Vote>
+                <WorkerID>2</WorkerID>
+                <VoteValue>1</VoteValue>
+            </Vote>
+        </InputValues>
+        <Oracles>
+            <Decision>
+                <WorkerID>1</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <Decision>
+                <WorkerID>2</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <FinalDecision>1</FinalDecision>
+        </Oracles>
+    </TestCase>
+    <TestCase ID="2">
+        <InputValues>
+            <Vote>
+                <WorkerID>1</WorkerID>
+                <VoteValue>1</VoteValue>
+            </Vote>
+            <Vote>
+                <WorkerID>2</WorkerID>
+                <VoteValue>0</VoteValue>
+            </Vote>
+        </InputValues>
+        <Oracles>
+            <Decision>
+                <WorkerID>1</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <Decision>
+                <WorkerID>2</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <FinalDecision>1</FinalDecision>
+        </Oracles>
+    </TestCase>
+    <TestCase ID="3">
+        <InputValues>
+            <Vote>
+                <WorkerID>1</WorkerID>
+                <VoteValue>0</VoteValue>
+            </Vote>
+            <Vote>
+                <WorkerID>2</WorkerID>
+                <VoteValue>1</VoteValue>
+            </Vote>
+        </InputValues>
+        <Oracles>
+            <Decision>
+                <WorkerID>1</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <Decision>
+                <WorkerID>2</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <FinalDecision>1</FinalDecision>
+        </Oracles>
+    </TestCase>
+    <TestCase ID="4">
+        <InputValues>
+            <Vote>
+                <WorkerID>1</WorkerID>
+                <VoteValue>0</VoteValue>
+            </Vote>
+            <Vote>
+                <WorkerID>2</WorkerID>
+                <VoteValue>0</VoteValue>
+            </Vote>
+        </InputValues>
+        <Oracles>
+            <Decision>
+                <WorkerID>1</WorkerID>
+                <DecisionValue>0</DecisionValue>
+            </Decision>
+            <Decision>
+                <WorkerID>2</WorkerID>
+                <DecisionValue>0</DecisionValue>
+            </Decision>
+            <FinalDecision>0</FinalDecision>
+        </Oracles>
+    </TestCase>
+</Test>

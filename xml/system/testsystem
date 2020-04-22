@@ -1,0 +1,24 @@
+<Test Name="System" Type="systemtest">
+    <TypeAssignments>
+        <SystemParameterTypes>
+            <Field Name="SystemSize" Type="int"></Field>
+            <Field Name="QuorumSize" Type="int"></Field>
+            <Field Name="ServerIDs" Type="*[]int"></Field>
+            <Field Name="FailurePhaseOne" Type="int"></Field>
+            <Field Name="FailurePhaseTwo" Type="int"></Field>
+        </SystemParameterTypes>
+        <InputType Name="ClientRequests" Type="*[]string"></InputType>
+        <InputType Name="P1Failures" Type="*[]string"></InputType>
+        <InputType Name="P2Failures" Type="*[]string"></InputType>
+        <OracleType Name="ExpectedLegalResponses" Type="*[]string"></OracleType>
+        <OracleType Name="ExpectLeaders" Type="*[]string"></OracleType>
+    </TypeAssignments>
+    <SystemParameters>
+    </SystemParameters>
+    <TestCase ID="1">
+        <InputValues>
+        </InputValues>
+        <Oracles>
+        </Oracles>
+    </TestCase>
+</Test>

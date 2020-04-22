@@ -1,0 +1,26 @@
+<Test Name="PrepareQF" Type="unittest">
+    <TypeAssignments>
+        <SystemParameterTypes>
+            <Field Name="SystemSize" Type="int"></Field>
+            <Field Name="QuorumSize" Type="int"></Field>
+            <Field Name="ServerIDs" Type="*[]int"></Field>
+            <Field Name="FailurePhaseOne" Type="int"></Field>
+            <Field Name="FailurePhaseTwo" Type="int"></Field>
+        </SystemParameterTypes>
+        <InputType Name="PromiseMsgs" Type="[]*PromiseMsg">
+                <Field Name="Rnd" Type="uint32"></Field>
+                <Field Name="Vrnd" Type="uint32"></Field>
+                <Field Name="Vval" Type="string"></Field>
+        </InputType>
+        <OracleType Name="ExpectQuorum" Type="bool"></OracleType>
+        <OracleType Name="ExpectResult" Type="PromiseMsg"></OracleType>
+    </TypeAssignments>
+    <SystemParameters>
+    </SystemParameters>
+    <TestCase ID="1">
+        <InputValues>
+        </InputValues>
+        <Oracles>
+        </Oracles>
+    </TestCase>
+</Test>

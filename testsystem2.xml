@@ -1,0 +1,24 @@
+<Test Name="System" Type="systemtest">
+    <TypeAssignments>
+        <SystemParameterTypes>
+            <Field Name="NumOfWorker" Type="int" ></Field>
+        </SystemParameterTypes>
+        <InputType Name="Votes" Type="[]*Vote">
+            <Field Name="WorkerID" Type="int"></Field>
+            <Field Name="VoteValue" Type="int"></Field>
+        </InputType>
+        <OracleType Name="Decisions" Type="[]*Decision">
+            <Field Name="WorkerID" Type="int"></Field>
+            <Field Name="DecisionValue" Type="int"></Field>
+        </OracleType>
+        <OracleType Name="FinalDecision" Type="int"></OracleType>
+    </TypeAssignments>
+    <SystemParameters>
+    </SystemParameters>
+    <TestCase ID="1">
+        <InputValues>
+        </InputValues>
+        <Oracles>
+        </Oracles>
+    </TestCase>
+</Test>

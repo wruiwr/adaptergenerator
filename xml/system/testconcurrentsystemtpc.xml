@@ -1,0 +1,60 @@
+<Test Name="System" Type="systemtest">
+    <TypeAssignments>
+        <SystemParameterTypes>
+            <Field Name="NumberOfWorker" Type="int"></Field>
+        </SystemParameterTypes>
+        <InputType Name="Vote" Type="Vote">
+            <Field Name="WorkerID" Type="int"></Field>
+            <Field Name="VoteValue" Type="int"></Field>
+        </InputType>
+        <OracleType Name="Decisions" Type="[]*Decision">
+            <Field Name="WorkerID" Type="int"></Field>
+            <Field Name="DecisionValue" Type="int"></Field>
+        </OracleType>
+        <OracleType Name="FinalDecision" Type="int"></OracleType>
+    </TypeAssignments>
+    <SystemParameters>
+        <NumberOfWorker>3</NumberOfWorker>
+    </SystemParameters>
+    <TestCase ID="1">
+        <InputValues>
+            <Concurrent>
+                <Call Name="SendVote">
+                    <InputValue>
+                        <Vote>
+                            <WorkerID>1</WorkerID>
+                            <VoteValue>0</VoteValue>
+                        </Vote>
+                    </InputValue>
+                </Call>
+                <Call Name="SendVote">
+                    <InputValue>
+                        <Vote>
+                            <WorkerID>2</WorkerID>
+                            <VoteValue>1</VoteValue>
+                        </Vote>
+                    </InputValue>
+                </Call>
+            </Concurrent>
+            <Call Name="SendVote">
+                <InputValue>
+                    <Vote>
+                        <WorkerID>3</WorkerID>
+                        <VoteValue>0</VoteValue>
+                    </Vote>
+                </InputValue>
+            </Call>
+        </InputValues>
+        <Oracles>
+            <Decision>
+                <WorkerID>1</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <Decision>
+                <WorkerID>2</WorkerID>
+                <DecisionValue>1</DecisionValue>
+            </Decision>
+            <FinalDecision>1</FinalDecision>
+        </Oracles>
+    </TestCase>
+</Test>
