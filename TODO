@@ -1,0 +1,47 @@
+TODO
+
+* Make the output from the templates format the Go code: see the Source() function in https://golang.org/pkg/go/format/
+
+* Merge the two tools into a single one. Why do we need two tools?
+
+* Generate actual tests that can be executed with the main_test.go file.
+
+* Why do we need the 'tests' argument to testergen. These can be inferred from the content of the XML files, when made into a single tool.
+
+* The 'output' argument could have a default name, such as 'main_test.go'
+
+* Why run the readergen tool multiple times; why not let the tool accept multiple XML input files? See the Glob() function and Walk() and WalkFunc() functions.
+
+  It could be something like this (not tested):
+
+    err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() && filepath.Ext(info.Name()) == ".xml" {
+    		fmt.Printf("process XML file: %q\n", path)
+            // TODO process XML file
+		}
+		return nil
+	})
+	if err != nil {
+		fmt.Printf("error walking the path %q: %v\n", dir, err)
+	}
+
+  (Note: This function may recursively walk the 'dir' subdirectories and look for XML files.)
+
+  Another alternative is to use the filepath.Glob() function.
+
+* Suggested command line interface:
+  % xml2gotestgen -dir <path to xml files> // When processing all XML files in that directory
+  % xml2gotestgen -dir <path to xml files> case1.xml case2.xml // Process arbitrary number of XML input files
+  % xml2gotestgen -dir <path to xml files> testcase*.xml // Process XML input files with wildcard in specified directory.
+  % xml2gotestgen case?.xml  // Process XML input files with wildcards in the current directory
+  % xml2gotestgen *.xml  // Process XML input files with wildcards in the current directory
+  
+  Note that the '-dir' flag can supply the '.' as the default, to allow the user to not specify '-dir'
+  Also, I'm not sure if the shell will provide the actual pattern or if it will complete things for you,
+  but I'm pretty sure it won't complete things when the shell is in a different directory.
+  So the pattern should either way be passed through the Glob() function.
+
+
